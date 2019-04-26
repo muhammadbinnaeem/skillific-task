@@ -1,0 +1,16 @@
+<form>
+  <div class="form-group">
+    <h1>Notify Form</h1>
+    <label for="message">Message</label>
+    <textarea
+      id="message"
+      ng-model="form.message"
+      class="form-control"
+      rows="3"
+    ></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-default" ng-click="notify()">
+    Notify
+  </button>
+</form>
