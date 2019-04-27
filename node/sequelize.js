@@ -1,8 +1,13 @@
 const Sequelize = require('sequelize');
 const notificationsModel = require('./models/notifications');
 
-const sequelize = new Sequelize('skillific', 'root', '', {
-  host: 'localhost', // host
+const database = 'skillific';
+const user = 'root';
+const password = '';
+const host = 'localhost';
+
+const sequelize = new Sequelize(database, user, password, {
+  host: host,
   dialect: 'mysql',
   pool: {
     max: 10,
