@@ -1,4 +1,4 @@
-app.controller('formController', function($scope, $rootScope) {
+app.controller('formController', function($scope, $http, $rootScope) {
   $rootScope.active = '';
 
   $scope.form = {
@@ -6,7 +6,17 @@ app.controller('formController', function($scope, $rootScope) {
   };
 
   $scope.notify = function() {
-    console.log($scope.form.message);
-    $scope.form.message = '';
+    if (!$scope.form.message) {
+      alert('Message is required.');
+      return;
+    }
+    $http.post('http://localhost:3000/api/notifications', $scope.form).then(
+      function(response) {
+        $scope.form.message = '';
+      },
+      function(error) {
+        console.log(error);
+      }
+    );
   };
 });
