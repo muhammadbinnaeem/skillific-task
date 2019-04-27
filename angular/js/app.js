@@ -1,7 +1,6 @@
 var app = angular.module('skillific', ['ngRoute']);
-
-app.run();
-
+// socket connection
+var socket = io.connect('http://localhost:3000');
 app.config([
   '$routeProvider',
   function($routeProvider) {

@@ -12,7 +12,11 @@ router.post('/', function(req, res, next) {
   if (!req.body.message) {
     return res.json({ error: 'Message field is required.' });
   }
-  Notifications.create(req.body).then(notification => res.json(notification));
+  Notifications.create(req.body).then(notification => {
+    // After insert fire message event
+    req.app.io.sockets.emit('message', { data: notification });
+    res.json(notification);
+  });
 });
 
 module.exports = router;

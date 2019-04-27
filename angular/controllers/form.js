@@ -10,6 +10,7 @@ app.controller('formController', function($scope, $http, $rootScope) {
       alert('Message is required.');
       return;
     }
+    // create notification
     $http.post('http://localhost:3000/api/notifications', $scope.form).then(
       function(response) {
         $scope.form.message = '';

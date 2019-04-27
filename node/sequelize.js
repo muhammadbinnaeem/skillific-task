@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const notificationsModel = require('./models/notifications');
 
 const sequelize = new Sequelize('skillific', 'root', '', {
-  host: 'localhost',
+  host: 'localhost', // host
   dialect: 'mysql',
   pool: {
     max: 10,
@@ -13,9 +13,9 @@ const sequelize = new Sequelize('skillific', 'root', '', {
 });
 
 const Notifications = notificationsModel(sequelize, Sequelize);
-
+// create table(s)
 sequelize.sync({ force: true }).then(() => {
-  console.log(`Database & tables created!`);
+  console.log(`table created!`);
 });
 
 module.exports = {
